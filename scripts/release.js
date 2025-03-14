@@ -37,17 +37,11 @@ archive.on('error', (err) => {
 // Pipe archive data to the file
 archive.pipe(output);
 
-// Add the dist directory to the zip
-archive.directory(path.join(__dirname, '../dist/'), 'simple-gravatar');
-
-// Add the languages directory to the zip
+// Add files to the zip, all within the simple-gravatar directory
+archive.directory(path.join(__dirname, '../dist/'), 'simple-gravatar/dist');
 archive.directory(path.join(__dirname, '../languages/'), 'simple-gravatar/languages');
-
-// Add the plugin main file to the zip
-archive.file(path.join(__dirname, '../simple-gravatar.php'), { name: 'simple-gravatar.php' });
-
-// Add the readme file to the zip
-archive.file(path.join(__dirname, '../README.md'), { name: 'README.md' });
+archive.file(path.join(__dirname, '../simple-gravatar.php'), { name: 'simple-gravatar/simple-gravatar.php' });
+archive.file(path.join(__dirname, '../README.md'), { name: 'simple-gravatar/README.md' });
 
 // Finalize the archive
 archive.finalize(); 
