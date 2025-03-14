@@ -1,0 +1,85 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Simple Gravatar 1.0.0\n"
+"POT-Creation-Date: 2024-03-14 14:00+0000\n"
+"PO-Revision-Date: 2024-03-14 14:00+0000\n"
+"Last-Translator: Thomas Guillot\n"
+"Language-Team: Japanese\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.4.2\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: node_modules\n"
+"X-Poedit-SearchPathExcluded-1: dist\n"
+
+#: src/index.js:12
+msgid "Simple Gravatar"
+msgstr "シンプル Gravatar"
+
+#: src/index.js:13
+msgid "Display a Gravatar image associated with an email address. If no Gravatar is found, a default avatar will be shown."
+msgstr "メールアドレスに関連付けられた Gravatar 画像を表示します。Gravatar が見つからない場合は、デフォルトのアバターが表示されます。"
+
+#: src/index.js:15
+msgid "avatar"
+msgstr "アバター"
+
+#: src/index.js:16
+msgid "gravatar"
+msgstr "Gravatar"
+
+#: src/index.js:17
+msgid "profile"
+msgstr "プロフィール"
+
+#: src/index.js:18
+msgid "user"
+msgstr "ユーザー"
+
+#: src/index.js:19
+msgid "image"
+msgstr "画像"
+
+#: src/index.js:52
+msgid "Edit email address"
+msgstr "メールアドレスを編集"
+
+#: src/index.js:56
+msgid "Settings"
+msgstr "設定"
+
+#: src/index.js:58
+msgid "Size"
+msgstr "サイズ"
+
+#: src/index.js:67
+msgid "Enter an email address to display the associated Gravatar. If no Gravatar is found, a default avatar will be shown."
+msgstr "関連する Gravatar を表示するメールアドレスを入力してください。Gravatar が見つからない場合は、デフォルトのアバターが表示されます。"
+
+#: src/index.js:71
+msgid "Email Address"
+msgstr "メールアドレス"
+
+#: src/index.js:75
+msgid "Enter email address"
+msgstr "メールアドレスを入力"
+
+#: src/index.js:82
+msgid "Save"
+msgstr "保存"
+
+#: src/index.js:25
+msgid "User avatar"
+msgstr "ユーザーアバター"
+
+#: simple-gravatar.php:65
+#. translators: %s: User's display name from Gravatar
+msgid "Avatar for %s"
+msgstr "%s のアバター" 

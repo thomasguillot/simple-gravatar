@@ -1,0 +1,25 @@
+@import "./style";
+
+.wp-block-simple-gravatar-gravatar {
+
+	&:has(.components-placeholder) {
+		border-radius: 0 !important;
+		height: auto !important;
+		width: 100% !important;
+	}
+
+	.components-placeholder__fieldset {
+		align-items: flex-end;
+	}
+
+	.components-base-control {
+		flex: 1 1 auto;
+	}
+
+	&.is-highlighted::after,
+	&.is-highlighted ~ .is-multi-selected::after,
+	&:not([contenteditable="true"]):focus::after,
+	&.is-selected::after {
+		border-radius: inherit;
+	}
+}

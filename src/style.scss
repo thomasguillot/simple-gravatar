@@ -1,0 +1,17 @@
+.wp-block-simple-gravatar-gravatar {
+	align-items: center;
+	box-sizing: content-box;
+	display: flex;
+	justify-content: center;
+	overflow: hidden;
+
+	img {
+		display: block;
+		height: 100%;
+		margin: 0;
+		pointer-events: none;
+		user-select: none;
+		-webkit-user-select: none;
+		width: 100%;
+	}
+}

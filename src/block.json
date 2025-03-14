@@ -1,0 +1,43 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"title": "Simple Gravatar",
+	"name": "simple-gravatar/gravatar",
+	"version": "1.0.0",
+	"attributes": {
+		"email": {
+			"type": "string",
+			"default": ""
+		},
+		"size": {
+			"type": "number",
+			"default": 72
+		},
+		"align": {
+			"type": "string",
+			"default": "none"
+		}
+	},
+	"supports": {
+		"html": false,
+		"__experimentalBorder": {
+			"radius": true,
+			"color": true,
+			"style": true,
+			"width": true
+		},
+		"align": [ "left", "center", "right" ],
+		"filter": {
+			"duotone": true
+		}
+	},
+	"selectors": {
+		"filter": {
+			"duotone": ".wp-block-simple-gravatar-gravatar img"
+		}
+	},
+	"textdomain": "simple-gravatar",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}

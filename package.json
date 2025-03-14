@@ -1,0 +1,29 @@
+{
+  "name": "simple-gravatar",
+  "version": "1.0.0",
+  "description": "Simple Gravatar Block for WordPress",
+  "scripts": {
+    "build": "wp-scripts build --output-path=dist",
+    "start": "wp-scripts start --output-path=dist",
+    "release": "node scripts/release.js",
+    "lint:js": "wp-scripts lint-js src/",
+    "lint:scss": "wp-scripts lint-style '**/*.scss'",
+    "lint:php": "composer lint",
+    "lint": "npm run lint:js && npm run lint:scss && npm run lint:php",
+    "format:js": "wp-scripts format src/",
+    "format:scss": "wp-scripts lint-style '**/*.scss' --fix",
+    "format": "npm run format:js && npm run format:scss"
+  },
+  "dependencies": {
+    "@wordpress/block-editor": "^12.0.0",
+    "@wordpress/blocks": "^12.0.0",
+    "@wordpress/components": "^23.0.0",
+    "@wordpress/icons": "^9.0.0",
+    "crypto-js": "^4.2.0"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "^26.0.0",
+    "archiver": "^5.3.1",
+    "@wordpress/stylelint-config": "^21.0.0"
+  }
+}
