@@ -3,8 +3,14 @@ const path = require('path');
 const archiver = require('archiver');
 const package = require('../package.json');
 
+// Ensure release directory exists
+const releaseDir = path.join(__dirname, '../release');
+if (!fs.existsSync(releaseDir)) {
+	fs.mkdirSync(releaseDir);
+}
+
 // Create a write stream for the zip file
-const output = fs.createWriteStream(path.join(__dirname, `simple-gravatar-${package.version}.zip`));
+const output = fs.createWriteStream(path.join(__dirname, '../release', `simple-gravatar-${package.version}.zip`));
 const archive = archiver('zip', {
 	zlib: { level: 9 } // Sets the compression level
 });
