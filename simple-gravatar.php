@@ -45,24 +45,24 @@ add_action( 'init', 'create_simple_gravatar_block' );
  */
 function render_simple_gravatar_block( $attributes ) {
 	$email = $attributes['email'] ?? '';
-	$size = $attributes['size'] ?? 72;
+	$size  = $attributes['size'] ?? 72;
 
 	if ( empty( $email ) ) {
 		return '';
 	}
 
-	$hash = hash( 'sha256', strtolower( trim( $email ) ) );
+	$hash         = hash( 'sha256', strtolower( trim( $email ) ) );
 	$gravatar_url = sprintf(
 		'https://www.gravatar.com/avatar/%s?s=%d&default=mp',
 		$hash,
-		$size * 2 // For retina displays
+		$size * 2 // For retina displays.
 	);
 
-	// Fetch profile name from Gravatar
+	// Fetch profile name from Gravatar.
 	$profile_name = '';
-	$profile_url = sprintf( 'https://www.gravatar.com/%s.json', $hash );
-	$response = wp_safe_remote_get( $profile_url );
-	
+	$profile_url  = sprintf( 'https://www.gravatar.com/%s.json', $hash );
+	$response     = wp_safe_remote_get( $profile_url );
+
 	if ( ! is_wp_error( $response ) && 200 === wp_remote_retrieve_response_code( $response ) ) {
 		$body = wp_remote_retrieve_body( $response );
 		$data = json_decode( $body );
@@ -71,13 +71,18 @@ function render_simple_gravatar_block( $attributes ) {
 		}
 	}
 
-	$alt_text = ! empty( $profile_name ) 
-		? sprintf( __( 'Avatar for %s', 'simple-gravatar' ), $profile_name )
-		: __( 'User avatar', 'simple-gravatar' );
+	if ( ! empty( $profile_name ) ) {
+		// translators: %s: The name of the person whose Gravatar is being displayed.
+		$alt_text = sprintf( __( 'Avatar for %s', 'simple-gravatar' ), $profile_name );
+	} else {
+		$alt_text = __( 'User avatar', 'simple-gravatar' );
+	}
 
-	$wrapper_attributes = get_block_wrapper_attributes( array(
-		'style' => sprintf( 'width: %dpx; height: %dpx;', $size, $size )
-	) );
+	$wrapper_attributes = get_block_wrapper_attributes(
+		array(
+			'style' => sprintf( 'width: %dpx; height: %dpx;', $size, $size ),
+		)
+	);
 
 	return sprintf(
 		'<div %s><img src="%s" alt="%s" width="%d" height="%d"></div>',

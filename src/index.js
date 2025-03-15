@@ -15,9 +15,8 @@ import {
 	Path,
 } from '@wordpress/components';
 import { edit } from '@wordpress/icons';
-import SHA256 from 'crypto-js/sha256';
 import { __ } from '@wordpress/i18n';
-import { useState } from '@wordpress/element';
+import { useState, useEffect } from '@wordpress/element';
 import './editor.scss';
 import './style.scss';
 
@@ -36,16 +35,33 @@ const isValidEmail = ( email ) => {
 	return email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test( email );
 };
 
-const getGravatarHash = ( email ) => {
+const sha256 = async ( message ) => {
+	// Encode the message as UTF-8
+	const msgBuffer = new TextEncoder().encode( message );
+
+	// Hash the message
+	const hashBuffer = await crypto.subtle.digest( 'SHA-256', msgBuffer );
+
+	// Convert ArrayBuffer to Array
+	const hashArray = Array.from( new Uint8Array( hashBuffer ) );
+
+	// Convert bytes to hex string
+	const hashHex = hashArray
+		.map( ( b ) => b.toString( 16 ).padStart( 2, '0' ) )
+		.join( '' );
+	return hashHex;
+};
+
+const getGravatarHash = async ( email ) => {
 	if ( ! email ) return '';
 	const trimmedEmail = email.trim();
 	const lowerEmail = trimmedEmail.toLowerCase();
-	return SHA256( lowerEmail ).toString();
+	return await sha256( lowerEmail );
 };
 
-const getGravatarUrl = ( email, size ) => {
+const getGravatarUrl = async ( email, size ) => {
 	if ( ! email ) return '';
-	const hash = getGravatarHash( email );
+	const hash = await getGravatarHash( email );
 	// Request 2x size for Retina displays
 	return `https://www.gravatar.com/avatar/${ hash }?s=${
 		size * 2
@@ -53,7 +69,15 @@ const getGravatarUrl = ( email, size ) => {
 };
 
 const GravatarImage = ( { blockProps = {}, email = '', size = 72 } ) => {
-	const imageUrl = getGravatarUrl( email, size );
+	const [ imageUrl, setImageUrl ] = useState( '' );
+
+	useEffect( () => {
+		const loadImage = async () => {
+			const url = await getGravatarUrl( email, size );
+			setImageUrl( url );
+		};
+		loadImage();
+	}, [ email, size ] );
 
 	return (
 		<div { ...blockProps }>
@@ -204,5 +228,4 @@ registerBlockType( 'simple-gravatar/gravatar', {
 
 	// Let PHP handle the rendering
 	save: () => null,
-
 } );
