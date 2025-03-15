@@ -89,7 +89,3 @@ This will create a zip file in the `release` directory containing all necessary 
 ## License
 
 This project is licensed under the GPL v2 or later.
-
-## Credits
-
-Created by [Thomas Guillot](https://thomasguillot.com/) 
