@@ -2,13 +2,15 @@
 /**
  * Plugin Name: Simple Gravatar
  * Description: A simple block to display Gravatar images
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Thomas Guillot
  * Author URI: https://thomasguillot.com/
+ * License: GPL-2.0-or-later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: simple-gravatar
  * Domain Path: /languages
  *
- * @package Simple_Gravatar
+ * @package simple-gravatar
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
